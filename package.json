@@ -1,23 +1,15 @@
 {
-  "name": "2.ea-kodutoo",
+  "name": "klahviminehomework",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "* Mäng, mille eesmärk on võimalikult kiiresti ekraanile tekkivaid sõnu ära trükkida * Sõnad võetud [Eesti Keele Instituudi lehelt](http://www.eki.ee/tarkvara/wordlist/), [lemmad2013](http://www.eki.ee/tarkvara/wordlist/lemmad2013.txt)",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/eesrakenduste-arendamine-2018k/2.ea-kodutoo.git"
-  },
   "author": "",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/eesrakenduste-arendamine-2018k/2.ea-kodutoo/issues"
-  },
-  "homepage": "https://github.com/eesrakenduste-arendamine-2018k/2.ea-kodutoo#readme",
-  "devDependencies": {
-    "eslint": "^4.18.2",
-    "standard": "^11.0.0"
+  "license": "ISC",
+  "dependencies": {
+    "eslint": "^4.19.1",
+    "standard": "^11.0.1"
   }
 }
