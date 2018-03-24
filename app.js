@@ -177,7 +177,7 @@ function startGame(){
 	window.typer = typer
 		
 	let display = document.querySelector('#time');
-	let time = 10 // timeri aeg sekundites
+	let time = 30 // timeri aeg sekundites
 	let duration
 	startTimer(time, display);
 }
