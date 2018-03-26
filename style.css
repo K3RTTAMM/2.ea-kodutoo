@@ -1,0 +1,36 @@
+body {
+    /* pilt võetud siit: https://pixabay.com/en/wood-wooden-table-desktop-aerial-3182655/  */
+    background-image: url("wood.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+button {
+    width:200px;
+    height: 90px;
+    background-color: black;
+    color: white;
+    border-color: black;
+    text-align: center;
+    font-size: 16px;
+    margin: 4px 2px;
+    font-family: Arial, Helvetica, sans-serif;
+    position: relative;
+    padding: 15px 32px;
+    opacity: 1.7;
+}
+
+.arialFont {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container{
+ 
+    max-width: 50%;
+    margin: auto;
+    margin-top: 10%;
+    background: white;
+    padding: 30px;
+    text-align: center;
+    opacity: 0.9;
+}
