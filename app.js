@@ -1,3 +1,4 @@
+
 /* TYPER */
 const TYPER = function () {
 	console.log("TYPER funktsioon.")
@@ -154,70 +155,57 @@ const TYPER = function () {
   }
   
   function highScores() {
-	  toggleMenu("startGame")
-	  toggleMenu("highScores")
-	  toggleMenu("playerName")
-	  toggleMenu("menuButton")
-	  toggleMenu("scores")
+	  showHide("startGame")
+	  showHide("highScores")
+	  showHide("playerName")
+	  showHide("menuButton")
+	  showHide("scores")
   }
   
   function highToMenu() {
-	  toggleMenu("startGame")
-	  toggleMenu("highScores")
-	  toggleMenu("playerName")
-	  toggleMenu("menuButton")
-	  toggleMenu("scores")
+	  showHide("startGame")
+	  showHide("highScores")
+	  showHide("playerName")
+	  showHide("menuButton")
+	  showHide("scores")
   }
   
   function startGame(){
 	  document.getElementById("gameStartDiv").innerHTML="<canvas></canvas>"
-	  toggleMenu("gameMenu");
-	  toggleMenu("topBar")
+	  showHide("gameMenu");
+	  showHide("topBar")
 	  const typer = new TYPER()
 	  window.typer = typer
 		  
 	  let display = document.querySelector('#time');
-	  let time = 30 // timeri aeg sekundites
+	  let time = 10 // timeri aeg sekundites
 	  let duration
 	  startTimer(time, display);
   }
   
-  function restartGame(){
-	  
+  function newGame(){
+  
 	  const typer = new TYPER()
 	  window.typer = typer
+	  typer.guessedWords = 0
+	  typer.guessedLetters = 0
+	  typer.score = 0
+	  document.getElementById("score").innerHTML=""
 	  typer.generateWord()
 	  typer.word.Draw()
 	  startTimer(10, display)
-  
   }
   
   window.onload = function(){
-	  toggleMenu("topBar")
-	  toggleMenu("scores")
-	  toggleMenu("menuButton")
-	  console.log("Window.onload laetud")
+	  showHide("topBar")
+	  showHide("scores")
+	  showHide("menuButton")
+	  
   }
   
-  function showHighScores() {
-	  for (let i=0; i<10; i++) {
-		  document.getElementById(i+1+".").innerHTML = sortArray()[i];
-	  }
-  }
-  
-  function sortArray() {
-	  let unsorted = JSON.parse(localStorage.getItem('array'))
-	  sorted = unsorted.sort(function(a,b){
-		  return a[1] - b[1];
-	  });
-	  sorted2 = sorted.reverse(function(a,b){
-		  return a[1] - b[1];
-	  });
-	  return sorted2;
-  }
-  
-  function toggleMenu(menuType) {
-	  let x = document.getElementById(menuType);
+  //https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_toggle_hide_show
+  function showHide(divID) {
+	  var x = document.getElementById(divID);
 	  if (x.style.display === "none") {
 		  x.style.display = "block";
 	  } else {
@@ -229,48 +217,52 @@ const TYPER = function () {
 	  document.getElementById("score").innerHTML = score+ " punkti (" + typer.guessedWords + " sõna kirjutatud)"
   }
   
-  function clearScore(){
-	  typer.guessedWords = 0
-	  typer.guessedLetters = 0
-	  typer.score = 0
-	  document.getElementById("score").innerHTML=""
+  
+  function saveScore(){
+  
+	  let allPlayerData = []
+		  let singlePlayerData = {playerName: typer.playerName, playerScore: typer.score}
+		  let storageData = null
+  
+		  if(localStorage.getItem("allPlayerData")){
+			  storageData = JSON.parse(localStorage.getItem("allPlayerData"))
+			  if(allPlayerData = storageData){
+				  allPlayerData = storageData
+			  }
+  
+		  }
+  
+		  allPlayerData.push(singlePlayerData)
+		  localStorage.setItem("allPlayerData", JSON.stringify(allPlayerData))
+  
   }
   
-  function saveScore (playerName, playerScore) {
-	  array = []
-	  if (window.localStorage.length == 0) {
-		  player = [playerName,playerScore];
-		  array.push(player)
-		  localStorage.setItem('array', JSON.stringify(array));
-	  } else {
-		  let stored = JSON.parse(localStorage.getItem('array'));
-		  let player2 = [playerName,playerScore];
-		  stored.push(player2);
-		  localStorage.setItem("array", JSON.stringify(stored));
-	  }
-  }
-  
+  //https://stackoverflow.com/questions/20618355/the-simplest-possible-javascript-countdown-timer
   function startTimer(duration, display) {
-	var timer = duration, minutes, seconds;
+	var timer = duration, minutes, seconds
 	setInterval(function () {
 		  minutes = parseInt(timer / 60, 10)
-		  seconds = parseInt(timer % 60, 10);
+		  seconds = parseInt(timer % 60, 10)
   
-		  minutes = minutes < 10 ? "0" + minutes : minutes;
-		  seconds = seconds < 10 ? "0" + seconds : seconds;
+		  minutes = minutes < 10 ? "0" + minutes : minutes
+		  seconds = seconds < 10 ? "0" + seconds : seconds
   
-		  display.textContent = minutes + ":" + seconds;
+		  display.textContent = minutes + ":" + seconds
   
 	  if (--timer < 0) {
+		  
+  
 		  
 		  let again = confirm("Mäng läbi! \nSinu skoor on: " + typer.score + " \nMängi uuesti?")
 		  
 		  if(again === true){
 			  timer = duration
-			  clearScore()
-			  restartGame()
+			  saveScore()
+			  newGame()
 			  
-		  }else{
+		  }else if( again=== false){
+			  timer = duration
+			  saveScore()
 			  window.location.href = "index.html"
 		  }
 		  
