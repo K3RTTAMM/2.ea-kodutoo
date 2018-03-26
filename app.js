@@ -152,23 +152,10 @@ const TYPER = function () {
 		  document.getElementById("playerNameText").value= "Anonymous"
 		  startGame()
 	  }
+	  
   }
   
-  function highScores() {
-	  showHide("startGame")
-	  showHide("highScores")
-	  showHide("playerName")
-	  showHide("menuButton")
-	  showHide("scores")
-  }
-  
-  function highToMenu() {
-	  showHide("startGame")
-	  showHide("highScores")
-	  showHide("playerName")
-	  showHide("menuButton")
-	  showHide("scores")
-  }
+ 
   
   function startGame(){
 	  document.getElementById("gameStartDiv").innerHTML="<canvas></canvas>"
@@ -200,6 +187,7 @@ const TYPER = function () {
 	  showHide("topBar")
 	  showHide("scores")
 	  showHide("menuButton")
+	  top10Players()
 	  
   }
   
@@ -236,9 +224,7 @@ const TYPER = function () {
 		  localStorage.setItem("allPlayerData", JSON.stringify(allPlayerData))
    }
 
-window.onload = function() {
-	top10Players();
-};
+
 
 
 //http://www.internet-technologies.ru/articles/sortirovka-massivov-v-javascript.html
@@ -260,7 +246,15 @@ function top10Players() {
 
 	for (i = 0; i < 10; i++) {
 		content.innerHTML += "<li>" + "Name: " + allPlayerData[i].playerName + " Score: " + allPlayerData[i].playerScore + "</li>";
-	}l
+	}
+
+	
+
+}
+
+function showScores(){
+	showHide("scores")
+	showHide("playerName")
 }
 
   
