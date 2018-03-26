@@ -17,29 +17,25 @@
 		canvas {
 			position: absolute;
 		}
-		
-		.arialFont {
-			font-family: Arial, Helvetica, sans-serif;
-		}
 
     </style>
     <script src="app.js"></script>
 	</head>
 	<body>
     	<div id="gameMenu">
-        <h1 class="arialFont">Typer</h1>
+        <h1>Typer</h1>
 		<br>
-		<p class="arialFont">Eesmärgiks on trükkida ekraanile ilmuvaid sõnu. <br>
+		<p>Eesmärgiks on trükkida ekraanile ilmuvaid sõnu. <br>
         Iga õigesti trükitud tähe eest suureneb skoor ühe võrra ning iga vale tähe eest väheneb skoor ühe võrra.<br>
         Peale igat viiendat õigesti kirjutatud sõna lisandub skoorile boonus +10.</p>
 		<br>
 			<div id="menuButton">
-				<button type="button" id="menuBack" onclick="highToMenu()" class="arialFont">Menüü</button>
+				<button type="button" id="menuBack" onclick="highToMenu()">Menüü</button>
 			</div>
-			    <div id="playerName" class="arialFont">Mängija nimi:
+			    <div id="playerName">Mängija nimi:
 					<input type="text" id="playerNameText"><br>
 				</div>
-			<div id="scores" class="arialFont">
+			<div id="scores">
 				<p>1. <label id="1.">null</label></p>
 				<p>2. <label id="2.">null</label></p>
 				<p>3. <label id="3.">null</label></p>
@@ -51,16 +47,16 @@
 				<p>9. <label id="9.">null</label></p>
 				<p>10. <label id="10.">null</label></p>			
 			</div>
-        	<button type="button" id="startGame" onclick="checkNameInput()" class="arialFont">Alusta mängu</button>
+        	<button type="button" id="startGame" onclick="checkNameInput()">Alusta mängu</button>
 			<br>
-			<button type="button" id="highScores" onclick="highScores();showHighScores()" class="arialFont">Parimad skoorid</button>
+			<button type="button" id="highScores" onclick="highScores(); showHighScores()">Parimad skoorid</button>
 			<br>
     	</div>	
 
     	<div id="topBar">
-        <a href="" id="backToMenu" class="arialFont">Tagasi menüüsse</a>
-		  <div class="arialFont">Mängu lõpuni on:  <span id="time">00:10</span></div>
-		<p class="arialFont">Sinu skoor: </p><p id=score></p>
+        <a href="" id="backToMenu">Tagasi menüüsse</a>
+		  <div>Mängu lõpuni on:  <span id="time">00:10</span></div>
+		<p>Sinu skoor: </p><p id=score></p>
 		</div>
 		<div id="gameStartDiv">
 		</div>
