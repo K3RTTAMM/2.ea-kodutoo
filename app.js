@@ -234,8 +234,35 @@ const TYPER = function () {
   
 		  allPlayerData.push(singlePlayerData)
 		  localStorage.setItem("allPlayerData", JSON.stringify(allPlayerData))
-  
-  }
+   }
+
+window.onload = function() {
+	top10Players();
+};
+
+
+//http://www.internet-technologies.ru/articles/sortirovka-massivov-v-javascript.html
+function sortScores(i, ii) { // Убывание
+	if (i.playerScore < ii.playerScore){
+	return 1;
+	}else if (i.playerScore > ii.playerScore){
+	return -1;
+	}else{
+	return 0;
+	}
+}
+
+function top10Players() {
+	var allPlayerData = JSON.parse(localStorage.getItem("allPlayerData"));
+	var content = document.getElementsByClassName('top10players')[0];
+
+	allPlayerData.sort(sortScores);
+
+	for (i = 0; i < 10; i++) {
+		content.innerHTML += "<li>" + "Name: " + allPlayerData[i].playerName + " Score: " + allPlayerData[i].playerScore + "</li>";
+	}l
+}
+
   
   //https://stackoverflow.com/questions/20618355/the-simplest-possible-javascript-countdown-timer
   function startTimer(duration, display) {
@@ -269,3 +296,5 @@ const TYPER = function () {
 		}
 	   }, 1000);	
   }
+
+  //TOP10//
