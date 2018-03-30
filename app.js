@@ -149,6 +149,11 @@ function checkNameInput() {
 	}
 	  
 }
+
+//https://www.youtube.com/watch?v=oqsjyzLicgE
+function play(){
+	var audio = document.getElementById("bgm");
+	audio.play();}
   
 function startGame(){
 	document.getElementById("gameStartDiv").innerHTML="<canvas></canvas>"
@@ -158,9 +163,10 @@ function startGame(){
 	window.typer = typer
 		  
 	let display = document.querySelector('#time');
-	let time = 10 // timeri aeg sekundites
+	let time = 30 // timeri aeg sekundites
 	let duration
 	startTimer(time, display);
+	play();
 }
   
 function newGame(){
@@ -224,6 +230,7 @@ function sortScores(i, ii) { // Убывание
 	}
 }
 
+//https://github.com/XeniaBelor/2.ea-kodutoo
 function top10Players() {
 	let allPlayerData = JSON.parse(localStorage.getItem("allPlayerData"));
 	let content = document.getElementsByClassName('top10players')[0];
